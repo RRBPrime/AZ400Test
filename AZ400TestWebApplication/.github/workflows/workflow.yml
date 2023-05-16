@@ -1,0 +1,21 @@
+﻿name: PipelineWorkflow
+
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+        branches:
+            - master
+
+jobs:
+    build:
+        name: Azure Pipeline
+        runs-on: windows-latest
+        steps:
+            - name: Azure Pipeline Action
+              uses: Azure/pipelines@v1
+              with:
+                azure-devops-project-url: https://dev.azure.com/RRBPrime/AZ400Agile
+                azure-pipeline-name: 'RRBPrime.AZ400Test'
+                azure-devops-token: ${{ secrests.AZURE_DEVOPS_TOKEN }}
